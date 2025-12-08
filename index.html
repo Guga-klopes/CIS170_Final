@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Gradient Visualizer - Math Final Project</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Plotly.js for 3D plotting -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>3D Gradient Visualizer</h1>
+        <p class="subtitle">Interactive visualization and practice for multivariable calculus</p>
+    </header>
+
+    <main>
+        <!-- 3D Plot Container -->
+        <section class="plot-section">
+            <div class="plot-container">
+                <div id="plot" class="plot"></div>
+            </div>
+
+            <!-- Controls for 3D plot -->
+            <div class="plot-controls">
+                <div class="control-group">
+                    <label for="functionSelect">Select Function:</label>
+                    <select id="functionSelect">
+                        <option value="quadratic">f(x,y) = ax² + bxy + cy² + dx + ey</option>
+                        <option value="exponential">f(x,y) = ae^(-(x²+y²)/c) + d</option>
+                        <option value="sinusoidal">f(x,y) = a·sin(x) + b·cos(y) + c</option>
+                        <option value="saddle">f(x,y) = ax² - by²</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="xInput">Point X:</label>
+                    <input type="number" id="xInput" step="0.1" value="0">
+                </div>
+
+                <div class="control-group">
+                    <label for="yInput">Point Y:</label>
+                    <input type="number" id="yInput" step="0.1" value="0">
+                </div>
+
+                <button id="updatePlotBtn" class="btn btn-primary">Update Plot</button>
+            </div>
+        </section>
+
+        <!-- Practice Questions Section -->
+        <section class="practice-section">
+            <div class="practice-container">
+                <h2>Practice: Find the Gradient</h2>
+
+                <!-- Question Panel -->
+                <div class="question-panel">
+                    <div class="question-text-box">
+                        <p id="questionText" class="question-text">
+                            Click "New Question" to generate a practice problem.
+                        </p>
+                    </div>
+
+                    <!-- Answer Input Area -->
+                    <div class="answer-input-area" id="answerInputArea" style="display: none;">
+                        <div class="answer-group">
+                            <label for="answerDfDx">∂f/∂x =</label>
+                            <input type="text" id="answerDfDx" placeholder="e.g., 2*x + y" class="answer-input">
+                        </div>
+
+                        <div class="answer-group">
+                            <label for="answerDfDy">∂f/∂y =</label>
+                            <input type="text" id="answerDfDy" placeholder="e.g., x + 2*y" class="answer-input">
+                        </div>
+
+                        <button id="submitAnswerBtn" class="btn btn-success">Submit Answer</button>
+                    </div>
+
+                    <!-- Feedback Area -->
+                    <div class="feedback-area" id="feedbackArea" style="display: none;">
+                        <div class="feedback-item">
+                            <label>∂f/∂x:</label>
+                            <div class="feedback-content">
+                                <span id="feedbackDfDx" class="feedback-result"></span>
+                            </div>
+                        </div>
+
+                        <div class="feedback-item">
+                            <label>∂f/∂y:</label>
+                            <div class="feedback-content">
+                                <span id="feedbackDfDy" class="feedback-result"></span>
+                            </div>
+                        </div>
+
+                        <div class="solution-area" id="solutionArea"></div>
+                    </div>
+                </div>
+
+                <!-- Question Control Buttons -->
+                <div class="question-controls">
+                    <button id="newQuestionBtn" class="btn btn-primary">New Question</button>
+                    <button id="skipQuestionBtn" class="btn btn-secondary" style="display: none;">Skip</button>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-area">
+                    <p>Correct: <span id="correctCount">0</span> | Attempted: <span id="attemptedCount">0</span></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>CIS 170 Final Project - 3D Gradient Visualizer | Built with HTML, CSS, and Vanilla JavaScript</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
